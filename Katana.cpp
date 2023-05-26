@@ -12,3 +12,11 @@ Katana::Katana (int poder, string color) {
 Katana::~Katana(){
 
 }
+
+int Katana::getPoderKatana() {
+	return poder;
+}
+
+string Katana::getColorKatana() {
+	return colorKatana;
+}

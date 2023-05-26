@@ -13,3 +13,12 @@ Pilar::Pilar(string nombre, int vida, int ataque, Katana kat, Respiracion tipoRe
 Pilar::~Pilar() {
 
 }
+int Pilar::getLunasVencidas() {
+	return cantLunasVencidas;
+}
+int Pilar::getAtaqueExtra() {
+	return ataqueExtra;
+}
+int Pilar::getVidaExtra() {
+	return vidaExtra;
+}

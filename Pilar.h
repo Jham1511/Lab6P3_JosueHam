@@ -13,4 +13,7 @@ public:
 	Pilar();
 	Pilar(string, int ,int, Katana, Respiracion, int ,int, int);
 	~Pilar();
+	int getLunasVencidas();
+	int getVidaExtra();
+	int getAtaqueExtra();
 };

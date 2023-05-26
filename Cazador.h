@@ -15,4 +15,11 @@ public:
 	Cazador();
 	Cazador(string, int, int, Katana, Respiracion);
 	~Cazador();
+	string getNombre();
+	int getVida();
+	int getAtaque();
+	Katana getKatana();
+	Respiracion getRespiracion();
+	void setAtaque(int);
+	void setVida(int);
 };

@@ -11,4 +11,6 @@ public:
 	Katana();
 	Katana(int, string);
 	~Katana();
+	int getPoderKatana();
+	string getColorKatana();
 };

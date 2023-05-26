@@ -13,4 +13,8 @@ public:
 	Luna_Superior();
 	Luna_Superior(string, int, int, int);
 	~Luna_Superior();
+	string getNombre();
+	int getPosicion();
+	int getRangoVida();
+	int getAtaque();
 };

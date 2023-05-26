@@ -5,11 +5,58 @@
 #include "Cazador.h"
 #include "Pilar.h"
 #include "Katana.h"
+#include "Respiracion.h"
 #include "Respiracion_Agua.h"
 #include "Respiracion_Fuego.h"
 #include "Respiracion_Roca.h"
 #include "Luna_Superior.h"
 using namespace std;
+
+void imprimirLunas(vector<Luna_Superior> lunas) {
+	cout << "Lunas Superiores Disponibles" << endl;
+	for (int i = 0; i < lunas.size(); i++)
+	{
+		cout << ""
+	}
+}
+
+void imprimirCazadoresYPilares(vector<Cazador> cazadores, vector<Pilar> pilares) {
+	cout << "Cazadores disponibles" << endl;
+	int ataqueTotal = 0;
+	for (int i = 0; i < cazadores.size(); i++)
+	{
+		ataqueTotal = cazadores[i].getAtaque() + cazadores[i].getKatana().getPoderKatana();// + cazadores[i].getRespiracion.rangoPoder();
+		cazadores[i].setAtaque(ataqueTotal);
+		cout << "Posicion: " << i << endl
+			<< "Nombre: " << cazadores[i].getNombre() << endl
+			<< "Vida: " << cazadores[i].getVida() << endl
+			<< "Ataque: " << cazadores[i].getAtaque() << endl
+			<< "Poder Katana: " << cazadores[i].getKatana().getPoderKatana() << endl
+			<< "Color Katana: " << cazadores[i].getKatana().getColorKatana() << endl;
+			//<< "Rango de Respiracion: " << cazadores[i].getRespiracion().rangoPoder() << endl;
+
+	}
+
+	for (int j = 0; j < pilares.size(); j++)
+	{
+		int ataque = pilares[j].getAtaque();
+		int vida = pilares[j].getVida();
+		pilares[j].setAtaque(ataque + pilares[j].getAtaqueExtra());
+		pilares[j].setVida(vida + pilares[j].getVidaExtra());
+	}
+	cout << "Pilares disponibles" << endl;
+	int ataqueTotal = 0;
+	for (int k = 0; k < pilares.size(); k++)
+	{
+		ataqueTotal = pilares[k].getAtaque() + cazadores[k].getKatana().getPoderKatana();
+		cout << "Posicion: " << k << endl
+			<< "Nombre: " << pilares[k].getNombre() << endl
+			<< "Vida: " << pilares[k].getVida() << endl
+			<< "Ataque: " << pilares[k].getAtaque() << endl
+			<< "Poder Katana: " << pilares[k].getKatana().getPoderKatana() << endl
+			<< "Color Katana: " << pilares[k].getKatana().getColorKatana() << endl;
+	}
+}
 
 int randomCazador() {
 	int aleatorio = 20 + rand() % (31 - 20);
@@ -35,8 +82,17 @@ int main()
 {
 	srand(time(NULL));
 	vector<Cazador> cazadoresAgregados;
+
 	vector<Luna_Superior> lunasAgregadas;
+	Luna_Superior lunaPrincipal("Ronal", 1, 450,300);
+	lunasAgregadas.push_back(lunaPrincipal);
+
 	vector<Pilar> pilaresAgregados;
+	Katana katanaWalter(15, "Naranja");
+	Respiracion_Agua respWalter;
+	Pilar pilarPrincipal("Walter", 25, 30, katanaWalter, respWalter, 3, 85, 100);
+	pilaresAgregados.push_back(pilarPrincipal);
+
 	int opcionIngresada = menu();
 
 	string coloresKatana[4];
@@ -183,7 +239,7 @@ int main()
 			break;
 		}
 		case 4:{//Imprimir Cazadores y Pilares
-
+			imprimirCazadoresYPilares(cazadoresAgregados, pilaresAgregados);
 			break;
 		}
 		case 5: {//Imprimir Lunas Superiores
