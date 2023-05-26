@@ -12,6 +12,28 @@
 #include "Luna_Superior.h"
 using namespace std;
 
+
+void imprimirPilares(vector<Pilar> pilares) {
+	for (int j = 0; j < pilares.size(); j++)
+	{
+		int ataque = pilares[j].getAtaque();
+		int vida = pilares[j].getVida();
+		pilares[j].setAtaque(ataque + pilares[j].getAtaqueExtra());
+		pilares[j].setVida(vida + pilares[j].getVidaExtra());
+	}
+	cout << "Pilares disponibles" << endl;
+	int ataqueTotal = 0;
+	for (int k = 0; k < pilares.size(); k++)
+	{
+		ataqueTotal = pilares[k].getAtaque() + pilares[k].getKatana().getPoderKatana();
+		cout << "Posicion: " << k << endl
+			<< "Nombre: " << pilares[k].getNombre() << endl
+			<< "Vida: " << pilares[k].getVida() << endl
+			<< "Ataque: " << pilares[k].getAtaque() << endl
+			<< "Poder Katana: " << pilares[k].getKatana().getPoderKatana() << endl
+			<< "Color Katana: " << pilares[k].getKatana().getColorKatana() << endl;
+	}
+}
 void imprimirLunas(vector<Luna_Superior> lunas) {
 	cout << "Lunas Superiores Disponibles" << endl;
 	for (int i = 0; i < lunas.size(); i++)
@@ -52,7 +74,7 @@ void imprimirCazadoresYPilares(vector<Cazador> cazadores, vector<Pilar> pilares)
 	int ataqueTotal = 0;
 	for (int k = 0; k < pilares.size(); k++)
 	{
-		ataqueTotal = pilares[k].getAtaque() + cazadores[k].getKatana().getPoderKatana();
+		ataqueTotal = pilares[k].getAtaque() + pilares[k].getKatana().getPoderKatana();
 		cout << "Posicion: " << k << endl
 			<< "Nombre: " << pilares[k].getNombre() << endl
 			<< "Vida: " << pilares[k].getVida() << endl
@@ -123,7 +145,7 @@ int main()
 			string nombreCazador;
 			cin >> nombreCazador;
 
-			Respiracion respCazador;
+			
 			cout << "Tipo de respiracion" << endl
 				<< "1 -> Agua" << endl
 				<< "2 -> Fuego" << endl
@@ -247,11 +269,38 @@ int main()
 			break;
 		}
 		case 5: {//Imprimir Lunas Superiores
+			imprimirLunas(lunasAgregadas);
+			cout << "Seleccione la posicion de una luna: ";
+			int posLuna;
+			cin >> posLuna;
 
+			imprimirPilares(pilaresAgregados);
+			cout << "Seleccione la posicion del pilar: ";
+			int posPilar;
+			cin >> posPilar;
+
+			if (posLuna <= lunasAgregadas.size() && posPilar <= pilaresAgregados.size())
+			{
+				while (lunasAgregadas[posLuna].getRangoVida() != 0 || pilaresAgregados[posPilar].getVida() != 0) {
+
+				}
+
+				if (lunasAgregadas[posLuna].getRangoVida() == 0)
+				{
+					cout << "Ganador del combate: " << pilaresAgregados[posPilar].getNombre() << endl;
+				}
+				else if (pilaresAgregados[posPilar].getVida() == 0){
+					cout << "Ganador del combate: " << lunasAgregadas[posLuna].getNombre() << endl;
+				}
+
+			}
+			else {
+				cout << "Fuera de los rangos disponibles" << endl;
+			}
 			break;
 		}
 		case 6: {//Simulacion
-
+			
 			break;
 		}
 		default: 

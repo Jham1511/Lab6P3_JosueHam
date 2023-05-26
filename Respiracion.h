@@ -4,5 +4,5 @@ class Respiracion
 public:
 	Respiracion();
 protected:
-	virtual int rangoPoder();
+	virtual int rangoPoder() = 0;
 };
