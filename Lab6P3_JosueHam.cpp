@@ -5,6 +5,10 @@
 #include "Cazador.h"
 #include "Pilar.h"
 #include "Katana.h"
+#include "Respiracion_Agua.h"
+#include "Respiracion_Fuego.h"
+#include "Respiracion_Roca.h"
+#include "Luna_Superior.h"
 using namespace std;
 
 int random() {
@@ -31,6 +35,8 @@ int main()
 {
 	srand(time(NULL));
 	vector<Cazador> cazadoresAgregados;
+	vector<Luna_Superior> lunasAgregadas;
+
 	int opcionIngresada = menu();
 
 	string coloresKatana[4];
@@ -51,26 +57,111 @@ int main()
 
 			Katana katCazador(poderKatana, coloresKatana[posicionColorKatana]);
 
-			Respiracion respCazador;
+			
 
 			cout << "Ingrese el nombre del cazador: ";
 			string nombreCazador;
 			cin >> nombreCazador;
 
-			int vidaCazador = 20 + rand() % (31 - 20);
-			int ataqueCazador = 20 + rand() % (31 - 20);
+			Respiracion respCazador;
+			cout << "Tipo de respiracion" << endl
+				<< "1 -> Agua" << endl
+				<< "2 -> Fuego" << endl
+				<< "3 -> Roca" << endl
+				<< "Ingrese el tipo de respiracion: " << endl;
+			int tipoRespiracion;
+			cin >> tipoRespiracion;
+			switch (tipoRespiracion){
+			case 1: {
 
-			Cazador cazadorCreado(nombreCazador, vidaCazador, ataqueCazador, katCazador, respCazador);
-			cazadoresAgregados.push_back(cazadorCreado);
-			cout << "Cazador agregado correctamente" << endl;
+				Respiracion_Agua respAgua;
+
+				int vidaCazador = 20 + rand() % (31 - 20);
+				int ataqueCazador = 20 + rand() % (31 - 20);
+
+				Cazador cazadorCreado(nombreCazador, vidaCazador, ataqueCazador, katCazador, respAgua);
+				cazadoresAgregados.push_back(cazadorCreado);
+				cout << "Cazador agregado correctamente" << endl;
+				break;
+			}
+			case 2: {
+				Respiracion_Fuego respFuego;
+
+				int vidaCazador = 20 + rand() % (31 - 20);
+				int ataqueCazador = 20 + rand() % (31 - 20);
+
+				Cazador cazadorCreado(nombreCazador, vidaCazador, ataqueCazador, katCazador, respFuego);
+				cazadoresAgregados.push_back(cazadorCreado);
+				cout << "Cazador agregado correctamente" << endl;
+				break;
+			}
+			case 3: {
+				Respiracion_Roca respRoca;
+
+				int vidaCazador = 20 + rand() % (31 - 20);
+				int ataqueCazador = 20 + rand() % (31 - 20);
+
+				Cazador cazadorCreado(nombreCazador, vidaCazador, ataqueCazador, katCazador, respRoca);
+				cazadoresAgregados.push_back(cazadorCreado);
+				cout << "Cazador agregado correctamente" << endl;
+			}
+			default:
+				cout << "???" << endl;
+			}//Fin del switch para saber el tipo de respiracion en un cazador
+			
 			break;
 		}
 		case 2: {//Crear Pilar
+			cout << "Bienvenido a Crear Pilar" << endl;
+			cout << "Ingrese el nombre del pilar" << endl;
+			string nombrePilar;
+			cin >> nombrePilar;
+			cout << "Tipo de respiracion" << endl
+				<< "1 -> Agua" << endl
+				<< "2 -> Fuego" << endl
+				<< "3 -> Roca" << endl
+				<< "Ingrese el tipo de respiracion: " << endl;
+			int tipoRespiracion;
+			cin >> tipoRespiracion;
+			switch (tipoRespiracion) {
+			case 1: {
 
+				break;
+			}
+			case 2: {
+
+				break;
+			}
+			case 3: {
+
+				break;
+			}	
+			default: 
+				cout << "!!!" << endl;
+			}
 			break;
 		}
 		case 3:{//Crear Luna Superior
+			cout << "Bienvenido a crear Luna Superior" << endl;
+			string nombreLuna;
+			cout << "Ingrese el nombre de la Luna Superior" << endl;
+			cin >> nombreLuna;
+			int posicion = 0;
 
+			if (lunasAgregadas.size() < 7)
+			{
+				posicion = lunasAgregadas.size() + 1;
+			}
+			else {
+				posicion = lunasAgregadas.size() - 1;
+			}
+
+			int vidaLuna = 400 + rand() % (501 - 400);
+			int ataqueLuna = 150 + rand() % (400 - 150);
+
+			Luna_Superior lunaCreada(nombreLuna, posicion, vidaLuna, ataqueLuna);
+			lunasAgregadas.push_back(lunaCreada);
+			cout << "Luna creada y agregada correctamente" << endl;
 			break;
 		}
 		case 4:{//Imprimir Cazadores y Pilares

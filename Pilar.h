@@ -8,9 +8,9 @@ using namespace std;
 class Pilar : public Cazador
 {
 private:
-	int cantLunasVencidas, vidaExtra;
+	int cantLunasVencidas, vidaExtra, ataqueExtra;
 public:
 	Pilar();
-	Pilar(int, int) :: Cazador(string, int, int, Katana, Respiracion);
+	Pilar(string, int ,int, Katana, Respiracion, int ,int, int);
 	~Pilar();
 };
