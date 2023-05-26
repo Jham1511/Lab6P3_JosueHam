@@ -11,8 +11,8 @@
 #include "Luna_Superior.h"
 using namespace std;
 
-int random() {
-	int aleatorio = 97 + rand() % (123 - 97);
+int randomCazador() {
+	int aleatorio = 20 + rand() % (31 - 20);
 	return aleatorio;
 }
 
@@ -36,7 +36,7 @@ int main()
 	srand(time(NULL));
 	vector<Cazador> cazadoresAgregados;
 	vector<Luna_Superior> lunasAgregadas;
-
+	vector<Pilar> pilaresAgregados;
 	int opcionIngresada = menu();
 
 	string coloresKatana[4];
@@ -71,13 +71,12 @@ int main()
 				<< "Ingrese el tipo de respiracion: " << endl;
 			int tipoRespiracion;
 			cin >> tipoRespiracion;
+			int vidaCazador = randomCazador();
+			int ataqueCazador = randomCazador();
 			switch (tipoRespiracion){
 			case 1: {
 
 				Respiracion_Agua respAgua;
-
-				int vidaCazador = 20 + rand() % (31 - 20);
-				int ataqueCazador = 20 + rand() % (31 - 20);
 
 				Cazador cazadorCreado(nombreCazador, vidaCazador, ataqueCazador, katCazador, respAgua);
 				cazadoresAgregados.push_back(cazadorCreado);
@@ -87,9 +86,6 @@ int main()
 			case 2: {
 				Respiracion_Fuego respFuego;
 
-				int vidaCazador = 20 + rand() % (31 - 20);
-				int ataqueCazador = 20 + rand() % (31 - 20);
-
 				Cazador cazadorCreado(nombreCazador, vidaCazador, ataqueCazador, katCazador, respFuego);
 				cazadoresAgregados.push_back(cazadorCreado);
 				cout << "Cazador agregado correctamente" << endl;
@@ -97,9 +93,6 @@ int main()
 			}
 			case 3: {
 				Respiracion_Roca respRoca;
-
-				int vidaCazador = 20 + rand() % (31 - 20);
-				int ataqueCazador = 20 + rand() % (31 - 20);
 
 				Cazador cazadorCreado(nombreCazador, vidaCazador, ataqueCazador, katCazador, respRoca);
 				cazadoresAgregados.push_back(cazadorCreado);
@@ -123,17 +116,42 @@ int main()
 				<< "Ingrese el tipo de respiracion: " << endl;
 			int tipoRespiracion;
 			cin >> tipoRespiracion;
+
+			int vidaPilar = randomCazador();
+			int ataquePilar = randomCazador();
+
+			int poderKatana = 10 + rand() % (21 - 10);
+
+			int posicionColorKatana = 0 + rand() % (4 - 0);
+
+			Katana katPilar(poderKatana, coloresKatana[posicionColorKatana]);
+			cout << "Cuantas lunas superiores ha vencido?" << endl;
+			int cantLunasVencidas;
+			cin >> cantLunasVencidas;
+			int vidaExtra = 80 + rand() % (91 - 80);
+			int ataqueExtra = 100;
+
 			switch (tipoRespiracion) {
 			case 1: {
+				Respiracion_Agua respAgua;
 
+				Pilar pilarCreado(nombrePilar, vidaPilar, ataquePilar, katPilar, respAgua, cantLunasVencidas, vidaExtra, ataqueExtra);
+				pilaresAgregados.push_back(pilarCreado);
+				cout << "Pilar agregado correctamente" << endl;
 				break;
 			}
 			case 2: {
+				Respiracion_Fuego respFuego;
 
+				Pilar pilarCreado(nombrePilar, vidaPilar, ataquePilar, katPilar, respFuego, cantLunasVencidas, vidaExtra, ataqueExtra);
+				pilaresAgregados.push_back(pilarCreado);
 				break;
 			}
 			case 3: {
+				Respiracion_Roca respRoca;
 
+				Pilar pilarCreado(nombrePilar, vidaPilar, ataquePilar, katPilar, respRoca, cantLunasVencidas, vidaExtra, ataqueExtra);
+				pilaresAgregados.push_back(pilarCreado);
 				break;
 			}	
 			default: 
