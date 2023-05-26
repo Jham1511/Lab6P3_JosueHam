@@ -16,7 +16,11 @@ void imprimirLunas(vector<Luna_Superior> lunas) {
 	cout << "Lunas Superiores Disponibles" << endl;
 	for (int i = 0; i < lunas.size(); i++)
 	{
-		cout << ""
+		cout << "Posicion: " << i << endl
+			<< "Nombre: " << lunas[i].getNombre() << endl
+			<< "Posicion de la Luna Superior: " << lunas[i].getPosicion() << endl
+			<< "Ataque: " << lunas[i].getAtaque() << endl
+			<< "Vida: " << lunas[i].getRangoVida() << endl;
 	}
 }
 
