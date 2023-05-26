@@ -4,5 +4,5 @@ class Respiracion_Agua : public Respiracion{
 public:
 	Respiracion_Agua();
 	~Respiracion_Agua();
-	int rangoPoder();
+	virtual int rangoPoder();
 };

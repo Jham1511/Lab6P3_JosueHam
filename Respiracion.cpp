@@ -3,7 +3,6 @@
 Respiracion::Respiracion() {
 
 }
-
-int Respiracion::rangoPoder(){
-	
+int Respiracion::rangoPoder() {
+	return 0;
 }

@@ -22,10 +22,9 @@ void imprimirPilares(vector<Pilar> pilares) {
 		pilares[j].setVida(vida + pilares[j].getVidaExtra());
 	}
 	cout << "Pilares disponibles" << endl;
-	int ataqueTotal = 0;
+	
 	for (int k = 0; k < pilares.size(); k++)
 	{
-		ataqueTotal = pilares[k].getAtaque() + pilares[k].getKatana().getPoderKatana();
 		cout << "Posicion: " << k << endl
 			<< "Nombre: " << pilares[k].getNombre() << endl
 			<< "Vida: " << pilares[k].getVida() << endl
@@ -48,11 +47,10 @@ void imprimirLunas(vector<Luna_Superior> lunas) {
 
 void imprimirCazadoresYPilares(vector<Cazador> cazadores, vector<Pilar> pilares) {
 	cout << "Cazadores disponibles" << endl;
-	int ataqueTotal = 0;
+	
 	for (int i = 0; i < cazadores.size(); i++)
 	{
-		ataqueTotal = cazadores[i].getAtaque() + cazadores[i].getKatana().getPoderKatana();// + cazadores[i].getRespiracion.rangoPoder();
-		cazadores[i].setAtaque(ataqueTotal);
+		
 		cout << "Posicion: " << i << endl
 			<< "Nombre: " << cazadores[i].getNombre() << endl
 			<< "Vida: " << cazadores[i].getVida() << endl

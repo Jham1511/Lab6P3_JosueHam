@@ -3,6 +3,5 @@ class Respiracion
 {
 public:
 	Respiracion();
-protected:
-	virtual int rangoPoder() = 0;
+	virtual int rangoPoder();
 };
