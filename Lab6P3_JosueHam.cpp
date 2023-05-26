@@ -279,10 +279,26 @@ int main()
 			int posPilar;
 			cin >> posPilar;
 
+			int vidaPilar = pilaresAgregados[posPilar].getVida();
+			int ataquePilar = pilaresAgregados[posPilar].getAtaque();
 			if (posLuna <= lunasAgregadas.size() && posPilar <= pilaresAgregados.size())
 			{
 				while (lunasAgregadas[posLuna].getRangoVida() != 0 || pilaresAgregados[posPilar].getVida() != 0) {
+					int probVidaPilar = 0 + rand() % (6 - 0);
+					if (probVidaPilar == 5)
+					{
+						pilaresAgregados[posPilar].setVida(vidaPilar);
+					}
 
+					if (pilaresAgregados[posPilar].getLunasVencidas()>0)
+					{
+						int ataqueLunasMuertas =0;
+						for (int i = 0; i < pilaresAgregados[posPilar].getLunasVencidas(); i++)
+						{
+							ataqueLunasMuertas += 20;
+						}
+						pilaresAgregados[posPilar].setAtaque(ataquePilar + ataqueLunasMuertas);
+					}
 				}
 
 				if (lunasAgregadas[posLuna].getRangoVida() == 0)
