@@ -1,6 +1,10 @@
 #include <iostream>
 #include <stdlib.h>
 #include <time.h>
+#include <vector>
+#include "Cazador.h"
+#include "Pilar.h"
+#include "Katana.h"
 using namespace std;
 
 int random() {
@@ -25,30 +29,59 @@ int menu() {
 
 int main()
 {
+	srand(time(NULL));
+	vector<Cazador> cazadoresAgregados;
 	int opcionIngresada = menu();
+
+	string coloresKatana[4];
+	coloresKatana[0] = "Rojo";
+	coloresKatana[1] = "Negro";
+	coloresKatana[2] = "Morado";
+	coloresKatana[3] = "Naranja";
+
 	while (opcionIngresada != 5) {
 		switch (opcionIngresada) {
-		case 1: {
+		case 1: {//Crear Cazador
+
+			cout << "Bienvenido a Crear Cazador" << endl;
+
+			int poderKatana = 10 + rand() % (21 - 10);
+
+			int posicionColorKatana = 0 + rand() % (4 - 0);
+
+			Katana katCazador(poderKatana, coloresKatana[posicionColorKatana]);
+
+			Respiracion respCazador;
+
+			cout << "Ingrese el nombre del cazador: ";
+			string nombreCazador;
+			cin >> nombreCazador;
+
+			int vidaCazador = 20 + rand() % (31 - 20);
+			int ataqueCazador = 20 + rand() % (31 - 20);
+
+			Cazador cazadorCreado(nombreCazador, vidaCazador, ataqueCazador, katCazador, respCazador);
+			cazadoresAgregados.push_back(cazadorCreado);
+			cout << "Cazador agregado correctamente" << endl;
+			break;
+		}
+		case 2: {//Crear Pilar
 
 			break;
 		}
-		case 2: {
+		case 3:{//Crear Luna Superior
 
 			break;
 		}
-		case 3:{
+		case 4:{//Imprimir Cazadores y Pilares
 
 			break;
 		}
-		case 4:{
+		case 5: {//Imprimir Lunas Superiores
 
 			break;
 		}
-		case 5: {
-
-			break;
-		}
-		case 6: {
+		case 6: {//Simulacion
 
 			break;
 		}

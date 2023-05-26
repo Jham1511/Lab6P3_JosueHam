@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 #include <iostream>
+#include "Katana.h"
+#include "Respiracion.h"
 using namespace std;
 class Cazador
 {

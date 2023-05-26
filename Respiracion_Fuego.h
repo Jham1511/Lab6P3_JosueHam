@@ -1,5 +1,6 @@
 #pragma once
-class Respiracion_Fuego 
+#include "Respiracion.h"
+class Respiracion_Fuego : public Respiracion
 {
 public:
 	int rangoPoder();
