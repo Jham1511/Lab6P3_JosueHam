@@ -1,5 +1,13 @@
 #include <iostream>
+#include <stdlib.h>
+#include <time.h>
 using namespace std;
+
+int random() {
+	int aleatorio = 97 + rand() % (123 - 97);
+	return aleatorio;
+}
+
 int menu() {
 	cout << "\nMenu del Programa" << endl
 		<< "1 -> Crear Cazador" << endl
