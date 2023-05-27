@@ -56,8 +56,8 @@ void imprimirCazadoresYPilares(vector<Cazador> cazadores, vector<Pilar> pilares)
 			<< "Vida: " << cazadores[i].getVida() << endl
 			<< "Ataque: " << cazadores[i].getAtaque() << endl
 			<< "Poder Katana: " << cazadores[i].getKatana().getPoderKatana() << endl
-			<< "Color Katana: " << cazadores[i].getKatana().getColorKatana() << endl;
-			//<< "Rango de Respiracion: " << cazadores[i].getRespiracion().rangoPoder() << endl;
+			<< "Color Katana: " << cazadores[i].getKatana().getColorKatana() << endl
+			<< "Rango de Respiracion: " << cazadores[i].getRespiracion().rangoPoder() << endl;
 
 	}
 
@@ -78,7 +78,8 @@ void imprimirCazadoresYPilares(vector<Cazador> cazadores, vector<Pilar> pilares)
 			<< "Vida: " << pilares[k].getVida() << endl
 			<< "Ataque: " << pilares[k].getAtaque() << endl
 			<< "Poder Katana: " << pilares[k].getKatana().getPoderKatana() << endl
-			<< "Color Katana: " << pilares[k].getKatana().getColorKatana() << endl;
+			<< "Color Katana: " << pilares[k].getKatana().getColorKatana() << endl
+			<< "Rango de Respiracion: " << pilares[k].getRespiracion().rangoPoder() << endl;
 	}
 }
 
