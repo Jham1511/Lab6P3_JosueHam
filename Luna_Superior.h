@@ -17,4 +17,6 @@ public:
 	int getPosicion();
 	int getRangoVida();
 	int getAtaque();
+	void setRangoVida(int);
+	void setAtaque(int);
 };

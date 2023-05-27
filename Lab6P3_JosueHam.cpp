@@ -281,14 +281,20 @@ int main()
 			int posPilar;
 			cin >> posPilar;
 
-			int vidaPilar = pilaresAgregados[posPilar].getVida();
-			int ataquePilar = pilaresAgregados[posPilar].getAtaque();
+			
 			if (posLuna <= lunasAgregadas.size() && posPilar <= pilaresAgregados.size())
 			{
 				while (lunasAgregadas[posLuna].getRangoVida() != 0 || pilaresAgregados[posPilar].getVida() != 0) {
+					int vidaPilar = pilaresAgregados[posPilar].getVida();
+					int ataquePilar = pilaresAgregados[posPilar].getAtaque();
+					int vidaLuna = lunasAgregadas[posLuna].getRangoVida();
+					int ataqueLuna = lunasAgregadas[posLuna].getAtaque();
 					cout << "Nombre: " << pilaresAgregados[posPilar].getNombre() << endl
 						<< "Vida: " << pilaresAgregados[posPilar].getVida() << endl;
 					int porcentajePilar = 1 + rand() % (101 - 1);
+					int porcentajeLuna = 1 + rand() % (101 - 1);
+					int ataqueCondicionadoPilar = ataquePilar * (porcentajePilar/100);
+					int ataqueCondicionadoLuna = ataqueLuna * (porcentajeLuna/100);
 					int probVidaPilar = 0 + rand() % (6 - 0);
 					if (probVidaPilar == 5)
 					{
@@ -304,8 +310,10 @@ int main()
 						}
 						pilaresAgregados[posPilar].setAtaque(ataquePilar + ataqueLunasMuertas);
 					}
-					cout << lunasAgregadas[posLuna].getNombre() << endl;
-
+					lunasAgregadas[posLuna].setRangoVida(vidaLuna - ataqueCondicionadoPilar);
+					pilaresAgregados[posPilar].setVida(vidaPilar - ataqueCondicionadoLuna);
+					cout << "Nombre: " << lunasAgregadas[posLuna].getNombre() << endl
+						<< "Vida: " << lunasAgregadas[posLuna].getRangoVida() << endl;
 				}//Fin del while
 
 				if (lunasAgregadas[posLuna].getRangoVida() == 0)

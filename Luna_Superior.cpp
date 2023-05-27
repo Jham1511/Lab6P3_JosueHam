@@ -27,3 +27,9 @@ int Luna_Superior::getPosicion() {
 int Luna_Superior::getAtaque() {
 	return ataque;
 }
+void Luna_Superior::setAtaque(int nueAtaque) {
+	this->ataque = nueAtaque;
+}
+void Luna_Superior::setRangoVida(int vida) {
+	this->rangoVida = vida;
+}
