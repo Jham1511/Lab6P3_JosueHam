@@ -125,7 +125,7 @@ int main()
 	coloresKatana[2] = "Morado";
 	coloresKatana[3] = "Naranja";
 
-	while (opcionIngresada != 5) {
+	while (opcionIngresada != 7) {
 		switch (opcionIngresada) {
 		case 1: {//Crear Cazador
 
@@ -268,6 +268,10 @@ int main()
 		}
 		case 5: {//Imprimir Lunas Superiores
 			imprimirLunas(lunasAgregadas);
+			break;
+		}
+		case 6: {//Simulacion
+			imprimirLunas(lunasAgregadas);
 			cout << "Seleccione la posicion de una luna: ";
 			int posLuna;
 			cin >> posLuna;
@@ -282,28 +286,36 @@ int main()
 			if (posLuna <= lunasAgregadas.size() && posPilar <= pilaresAgregados.size())
 			{
 				while (lunasAgregadas[posLuna].getRangoVida() != 0 || pilaresAgregados[posPilar].getVida() != 0) {
+					cout << "Nombre: " << pilaresAgregados[posPilar].getNombre() << endl
+						<< "Vida: " << pilaresAgregados[posPilar].getVida() << endl;
+					int porcentajePilar = 1 + rand() % (101 - 1);
 					int probVidaPilar = 0 + rand() % (6 - 0);
 					if (probVidaPilar == 5)
 					{
 						pilaresAgregados[posPilar].setVida(vidaPilar);
 					}
 
-					if (pilaresAgregados[posPilar].getLunasVencidas()>0)
+					if (pilaresAgregados[posPilar].getLunasVencidas() > 0)
 					{
-						int ataqueLunasMuertas =0;
+						int ataqueLunasMuertas = 0;
 						for (int i = 0; i < pilaresAgregados[posPilar].getLunasVencidas(); i++)
 						{
 							ataqueLunasMuertas += 20;
 						}
 						pilaresAgregados[posPilar].setAtaque(ataquePilar + ataqueLunasMuertas);
 					}
-				}
+					cout << lunasAgregadas[posLuna].getNombre() << endl;
+
+				}//Fin del while
 
 				if (lunasAgregadas[posLuna].getRangoVida() == 0)
 				{
 					cout << "Ganador del combate: " << pilaresAgregados[posPilar].getNombre() << endl;
+					int lunasVencidas = pilaresAgregados[posPilar].getLunasVencidas();
+					lunasVencidas++;
+					pilaresAgregados[posPilar].setLunasVencidas(lunasVencidas);
 				}
-				else if (pilaresAgregados[posPilar].getVida() == 0){
+				else if (pilaresAgregados[posPilar].getVida() == 0) {
 					cout << "Ganador del combate: " << lunasAgregadas[posLuna].getNombre() << endl;
 				}
 
@@ -311,10 +323,6 @@ int main()
 			else {
 				cout << "Fuera de los rangos disponibles" << endl;
 			}
-			break;
-		}
-		case 6: {//Simulacion
-			
 			break;
 		}
 		default: 

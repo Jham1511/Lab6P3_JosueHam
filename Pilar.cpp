@@ -22,3 +22,6 @@ int Pilar::getAtaqueExtra() {
 int Pilar::getVidaExtra() {
 	return vidaExtra;
 }
+void Pilar::setLunasVencidas(int cant) {
+
+}

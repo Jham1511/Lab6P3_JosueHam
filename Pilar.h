@@ -16,4 +16,5 @@ public:
 	int getLunasVencidas();
 	int getVidaExtra();
 	int getAtaqueExtra();
+	void setLunasVencidas(int);
 };

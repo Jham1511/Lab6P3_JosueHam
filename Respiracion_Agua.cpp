@@ -10,6 +10,7 @@ Respiracion_Agua::~Respiracion_Agua() {
 
 }
 int Respiracion_Agua::rangoPoder(){
+	srand(time(NULL));
 	int aleatorio = 60 + rand() % (81 - 60);
 	return aleatorio;
 }
